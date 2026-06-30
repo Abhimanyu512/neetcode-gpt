@@ -21,7 +21,6 @@ class Solution:
         for word in uniqueWords:
             i+=1
             tokenMap[word]=i
-        print(tokenMap)
         for sentence in positive:
             li = []
             for word in sentence.split(' '):
@@ -33,7 +32,6 @@ class Solution:
                 li.append(tokenMap[word])
             neg_encoded.append(torch.tensor(li))
         tensors = pos_encoded + neg_encoded
-        print(tensors)
         final = nn.utils.rnn.pad_sequence(tensors, batch_first=True)
         return final
         
